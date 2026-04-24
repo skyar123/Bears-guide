@@ -1,5 +1,3 @@
-import React from 'react';
-
 interface SidebarProps {
   currentChapter: number;
   onSelectChapter: (index: number) => void;
