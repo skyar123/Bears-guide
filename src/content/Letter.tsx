@@ -1,16 +1,14 @@
 import React from 'react';
-import { ImageFeature } from '../components/ImageFeature';
 
 export default function Letter() {
   return (
     <div className="chapter-content">
-      <h1>A Letter to the Teacher</h1>
+      <h1 className="part-title">A Letter to the Teacher</h1>
       
-      <ImageFeature 
-        src="/images/note_to_teacher.png" 
-        alt="A note to myself, taped to the inside of the door" 
-        caption="A note to myself, taped to the inside of the door." 
-      />
+      <div className="figure">
+        <div className="figure-image portrait"></div>
+        <div className="figure-caption">A note to myself, taped to the inside of the door.</div>
+      </div>
       
       <p>If you're reading this, someone handed you a stack of teddy bears and a manuscript and asked you to add one more thing to your week. We know. We've been the teacher in that moment — laminating machine still warm, twenty-six children about to walk in, a binder someone promised would "change everything" sitting unopened on the counter.</p>
       
@@ -20,30 +18,31 @@ export default function Letter() {
       
       <p>Read what helps. Skip what doesn't. The bears will be patient with you.</p>
       
-      <p className="text-muted" style={{ fontStyle: 'italic', marginBottom: '2rem' }}>— Gabriel and Skylar</p>
+      <div className="signoff">
+        — Gabriel and Skylar
+      </div>
       
       <p>There's a structural map of this guide at the back, in Appendix A. We put it there on purpose. Your first contact with this guide should be a child, not a color key.</p>
       
-      <div className="callout-cream">
-        <h3>IF YOU ONLY HAVE TEN MINUTES</h3>
-        <p>If you don't have time to read this guide before Monday, take this with you:</p>
-        <ul style={{ paddingLeft: '1.5rem', marginBottom: '1rem', fontFamily: 'var(--font-serif)', fontSize: '1.125rem' }}>
-          <li style={{ marginBottom: '0.5rem' }}>Choose bears that are 8–12 inches tall, soft, neutral-faced, and as close to identical as possible. Put them on a low shelf children can reach. Let each child choose one and name it.</li>
-          <li style={{ marginBottom: '0.5rem' }}>Watch before you talk. When a child is doing something with their bear, sit nearby. Let them tell you — or don't ask.</li>
-          <li style={{ marginBottom: '0.5rem' }}>When you do speak, speak about the bear, not the child. "Your bear looks worried" is something a three-year-old can hear. "You look worried" sometimes isn't.</li>
-          <li style={{ marginBottom: '0.5rem' }}>Never take a bear away as punishment.</li>
-          <li style={{ marginBottom: '0.5rem' }}>When something hard happens in the room, your steadiness is the intervention. The bear helps. You're the engine.</li>
+      <div className="callout ten-min">
+        <span className="callout-label">IF YOU ONLY HAVE TEN MINUTES</span>
+        <h5>If you don't have time to read this guide before Monday, take this with you:</h5>
+        <ul>
+          <li>Choose bears that are 8–12 inches tall, soft, neutral-faced, and as close to identical as possible. Put them on a low shelf children can reach. Let each child choose one and name it.</li>
+          <li>Watch before you talk. When a child is doing something with their bear, sit nearby. Let them tell you — or don't ask.</li>
+          <li>When you do speak, speak about the bear, not the child. "Your bear looks worried" is something a three-year-old can hear. "You look worried" sometimes isn't.</li>
+          <li>Never take a bear away as punishment.</li>
+          <li>When something hard happens in the room, your steadiness is the intervention. The bear helps. You're the engine.</li>
         </ul>
         <p>Everything else in this guide is an elaboration of those five things. If you want the why, read on.</p>
       </div>
 
       <h2>Welcome, Teacher</h2>
       
-      <ImageFeature 
-        src="/images/morning_dropoff.png" 
-        alt="Drop-off, a Tuesday in early October." 
-        caption="Drop-off, a Tuesday in early October." 
-      />
+      <div className="figure">
+        <div className="figure-image wide"></div>
+        <div className="figure-caption">Drop-off, a Tuesday in early October.</div>
+      </div>
       
       <p>Inside, the classroom was quiet as morning drop-off merged with free play. Outside, a light rain fell. The teacher sang "Hello, Everybody" as children arrived — some running in, some hanging back, some watching from the doorway.</p>
       

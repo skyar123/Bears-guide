@@ -6,6 +6,7 @@ interface SidebarProps {
 }
 
 const CHAPTERS = [
+  "Title Page",
   "A Letter to the Teacher",
   "Part One: Why Bears",
   "Part Two: Bringing Bears to Life",
@@ -18,60 +19,48 @@ const CHAPTERS = [
 
 export function Sidebar({ currentChapter, onSelectChapter }: SidebarProps) {
   return (
-    <nav style={{
-      width: '300px',
-      backgroundColor: 'var(--color-surface)',
-      borderRight: '1px solid var(--color-border)',
-      height: '100vh',
-      position: 'sticky',
-      top: 0,
-      padding: '2rem 1.5rem',
-      overflowY: 'auto'
-    }}>
-      <div style={{ marginBottom: '3rem' }}>
-        <h1 style={{ fontSize: '1.25rem', color: 'var(--color-primary)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+    <nav className="sidebar">
+      <div className="sidebar-logo">
+        <svg viewBox="0 0 100 100" style={{ height: '32px', width: 'auto', stroke: 'currentColor', fill: 'none', strokeWidth: 1.5 }}>
+          <circle cx="50" cy="50" r="40" />
+          <circle cx="50" cy="25" r="25" />
+          <circle cx="50" cy="75" r="25" />
+          <circle cx="25" cy="50" r="25" />
+          <circle cx="75" cy="50" r="25" />
+          <circle cx="32" cy="32" r="25" />
+          <circle cx="68" cy="68" r="25" />
+          <circle cx="32" cy="68" r="25" />
+          <circle cx="68" cy="32" r="25" />
+        </svg>
+        <div className="sidebar-logo-text">
           ConnectEd Circles
-        </h1>
-        <h2 style={{ fontSize: '1.5rem', marginTop: '0.5rem', lineHeight: 1.2 }}>
-          BEARS in the Classroom
-        </h2>
+          <small>BEARS Guide</small>
+        </div>
       </div>
       
-      <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+      <h4>Contents</h4>
+      
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
         {CHAPTERS.map((title, index) => {
           const isActive = index === currentChapter;
           return (
-            <li key={index}>
-              <button
-                onClick={() => onSelectChapter(index)}
-                style={{
-                  width: '100%',
-                  textAlign: 'left',
-                  background: 'none',
-                  border: 'none',
-                  padding: '0.75rem 1rem',
-                  borderRadius: 'var(--radius-md)',
-                  fontFamily: 'var(--font-sans)',
-                  fontSize: '0.95rem',
-                  cursor: 'pointer',
-                  transition: 'all 0.2s ease',
-                  backgroundColor: isActive ? 'var(--color-accent)' : 'transparent',
-                  color: isActive ? 'var(--color-text-main)' : 'var(--color-text-muted)',
-                  fontWeight: isActive ? 600 : 400
-                }}
-              >
-                {title}
-              </button>
-            </li>
+            <a 
+              key={index} 
+              href={`#chapter-${index}`}
+              onClick={(e) => {
+                e.preventDefault();
+                onSelectChapter(index);
+              }}
+              style={{
+                opacity: isActive ? 1 : undefined,
+                color: isActive ? 'var(--sage-light)' : undefined,
+                fontWeight: isActive ? 600 : undefined,
+              }}
+            >
+              {title}
+            </a>
           );
         })}
-      </ul>
-      
-      <div style={{ marginTop: 'auto', paddingTop: '3rem' }}>
-        <p className="text-muted" style={{ fontSize: '0.8rem', fontFamily: 'var(--font-sans)' }}>
-          By Gabriel Guyton & Skylar Belt<br/>
-          © ConnectEd Circles LLC
-        </p>
       </div>
     </nav>
   );

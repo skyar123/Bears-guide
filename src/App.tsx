@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Sidebar } from './components/Sidebar';
+import TitlePage from './content/TitlePage';
 import Letter from './content/Letter';
 import Part1 from './content/Part1';
 import Part2 from './content/Part2';
@@ -11,6 +12,7 @@ import Appendices from './content/Appendices';
 import './index.css';
 
 const CHAPTER_COMPONENTS = [
+  TitlePage,
   Letter,
   Part1,
   Part2,
@@ -32,51 +34,58 @@ function App() {
   const CurrentComponent = CHAPTER_COMPONENTS[currentChapter];
 
   return (
-    <div className="flex" style={{ minHeight: '100vh' }}>
+    <div className="guide-layout">
       <Sidebar 
         currentChapter={currentChapter} 
         onSelectChapter={setCurrentChapter} 
       />
-      <main style={{ flex: 1, padding: '4rem 2rem', backgroundColor: 'var(--color-bg)' }}>
-        <div className="container glass-panel" style={{ padding: '3rem', borderRadius: 'var(--radius-lg)' }}>
+      <main className="content">
+        {currentChapter === 0 ? (
           <CurrentComponent />
-          
-          <div className="flex justify-between" style={{ marginTop: '5rem', borderTop: '1px solid var(--color-border)', paddingTop: '2rem' }}>
-            <button 
-              onClick={() => setCurrentChapter(Math.max(0, currentChapter - 1))}
-              disabled={currentChapter === 0}
-              style={{
-                padding: '0.75rem 1.5rem',
-                borderRadius: 'var(--radius-md)',
-                border: '1px solid var(--color-border)',
-                background: 'transparent',
-                cursor: currentChapter === 0 ? 'not-allowed' : 'pointer',
-                opacity: currentChapter === 0 ? 0.5 : 1,
-                fontFamily: 'var(--font-sans)',
-                fontWeight: 500,
-                color: 'var(--color-text-main)'
-              }}
-            >
-              ← Previous
-            </button>
-            <button 
-              onClick={() => setCurrentChapter(Math.min(CHAPTER_COMPONENTS.length - 1, currentChapter + 1))}
-              disabled={currentChapter === CHAPTER_COMPONENTS.length - 1}
-              style={{
-                padding: '0.75rem 1.5rem',
-                borderRadius: 'var(--radius-md)',
-                border: 'none',
-                background: 'var(--color-primary)',
-                color: 'white',
-                cursor: currentChapter === CHAPTER_COMPONENTS.length - 1 ? 'not-allowed' : 'pointer',
-                opacity: currentChapter === CHAPTER_COMPONENTS.length - 1 ? 0.5 : 1,
-                fontFamily: 'var(--font-sans)',
-                fontWeight: 500
-              }}
-            >
-              Next →
-            </button>
+        ) : (
+          <div className="page">
+            <CurrentComponent />
           </div>
+        )}
+        
+        {/* Navigation buttons at the bottom of content */}
+        <div style={{ display: 'flex', justifyContent: 'space-between', padding: '0 60px 80px', maxWidth: currentChapter === 0 ? '100%' : '720px', margin: '0 auto' }}>
+          <button 
+            onClick={() => setCurrentChapter(Math.max(0, currentChapter - 1))}
+            disabled={currentChapter === 0}
+            style={{
+              padding: '12px 24px',
+              borderRadius: '2px',
+              border: '1px solid var(--rule)',
+              background: 'transparent',
+              cursor: currentChapter === 0 ? 'not-allowed' : 'pointer',
+              opacity: currentChapter === 0 ? 0.3 : 1,
+              fontFamily: 'var(--font-sans)',
+              fontWeight: 500,
+              fontSize: '14px',
+              color: 'var(--ink)'
+            }}
+          >
+            ← Previous
+          </button>
+          <button 
+            onClick={() => setCurrentChapter(Math.min(CHAPTER_COMPONENTS.length - 1, currentChapter + 1))}
+            disabled={currentChapter === CHAPTER_COMPONENTS.length - 1}
+            style={{
+              padding: '12px 24px',
+              borderRadius: '2px',
+              border: 'none',
+              background: 'var(--dark-green)',
+              color: 'var(--cream)',
+              cursor: currentChapter === CHAPTER_COMPONENTS.length - 1 ? 'not-allowed' : 'pointer',
+              opacity: currentChapter === CHAPTER_COMPONENTS.length - 1 ? 0.3 : 1,
+              fontFamily: 'var(--font-sans)',
+              fontWeight: 500,
+              fontSize: '14px'
+            }}
+          >
+            Next →
+          </button>
         </div>
       </main>
     </div>
